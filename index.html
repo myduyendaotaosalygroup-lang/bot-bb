@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bột BB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Be Vietnam Pro"', 'sans-serif'] },
+          colors: {
+            cream: { 50: '#FDFBF7', 100: '#FBF7EE', 200: '#F4ECE0', 300: '#E8DCB8' },
+            mocha: { 100: '#D5C3A5', 400: '#A89276', 600: '#755E43', 800: '#433422' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#FBF7EE] text-[#433422] font-sans antialiased min-h-screen flex flex-col justify-between max-w-md mx-auto px-5 py-6 select-none">
+
+  <!-- Header & Sticker Avatar -->
+  <header class="text-center mt-2 relative">
+    <button onclick="moCaiDat()" class="absolute right-0 top-0 text-mocha-400 hover:text-mocha-800 p-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+    </button>
+
+    <!-- Sticker Avatar Chibi -->
+    <div class="inline-block relative">
+      <svg class="w-24 h-24 mx-auto drop-shadow-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 48 C22 22, 78 22, 78 48" stroke="#79D2CE" stroke-width="6" stroke-linecap="round"/>
+        <path d="M26 40 C26 25, 74 25, 74 40 C76 60, 72 74, 70 76 C65 65, 35 65, 30 76 C28 74, 24 60, 26 40 Z" fill="#242121"/>
+        <circle cx="50" cy="50" r="23" fill="#FFF2DF" stroke="#433422" stroke-width="1.8"/>
+        <path d="M30 38 C35 30, 48 30, 50 35 C52 30, 65 30, 70 38 C65 34, 52 34, 50 38 C48 34, 35 34, 30 38 Z" fill="#242121"/>
+        <rect x="33" y="44" width="14" height="11" rx="3.5" stroke="#755E43" stroke-width="1.4" fill="white" fill-opacity="0.5"/>
+        <rect x="53" y="44" width="14" height="11" rx="3.5" stroke="#755E43" stroke-width="1.4" fill="white" fill-opacity="0.5"/>
+        <line x1="47" y1="49" x2="53" y2="49" stroke="#755E43" stroke-width="1.4"/>
+        <path d="M37 49 Q40 47 43 49" stroke="#433422" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <path d="M57 49 Q60 47 63 49" stroke="#433422" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <ellipse cx="34" cy="57" rx="3.2" ry="2" fill="#FFAAA6" opacity="0.85"/>
+        <ellipse cx="66" cy="57" rx="3.2" ry="2" fill="#FFAAA6" opacity="0.85"/>
+        <path d="M47 57 Q50 60 53 57" stroke="#BA4E44" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <rect x="18" y="44" width="8" height="18" rx="4" fill="#79D2CE" stroke="#433422" stroke-width="1.5"/>
+        <ellipse cx="22" cy="53" rx="2" ry="3" fill="white"/>
+        <rect x="74" y="44" width="8" height="18" rx="4" fill="#79D2CE" stroke="#433422" stroke-width="1.5"/>
+        <ellipse cx="78" cy="53" rx="2" ry="3" fill="white"/>
+      </svg>
+    </div>
+
+    <h1 class="text-xl font-bold tracking-wider text-mocha-800 mt-2">BỘT BB</h1>
+    <p class="text-xs text-mocha-600 font-medium">chào Bột Bảo Bối 🌱</p>
+  </header>
+
+  <!-- Khung bấm nói / ghi nhận giọng nói -->
+  <div class="my-5">
+    <button id="voiceBtn" onclick="toggleVoice()" class="w-full py-4 px-4 bg-white/90 active:scale-[0.98] border border-mocha-100 rounded-2xl shadow-sm flex items-center justify-center gap-3 transition-all">
+      <span id="micIcon" class="text-2xl">🎙️</span>
+      <span id="micText" class="text-sm font-semibold text-mocha-800">Nói điều cần nhớ</span>
+    </button>
+    <p id="statusMsg" class="text-[11px] text-center text-mocha-400 mt-2 h-4">Bấm micro hoặc gõ nhanh bên dưới</p>
+
+    <form onsubmit="nhapNhanh(event)" class="mt-3 flex gap-2">
+      <input id="quickInput" type="text" placeholder="Gõ nhanh: Mai 8h họp..." class="flex-1 bg-white/80 border border-mocha-100 rounded-xl px-3 py-2 text-xs text-mocha-800 placeholder-mocha-400 focus:outline-none focus:border-mocha-400" />
+      <button type="submit" class="bg-mocha-600 hover:bg-mocha-800 text-white rounded-xl px-3 py-2 text-xs font-medium">Lưu</button>
+    </form>
+  </div>
+
+  <!-- Danh sách lịch & việc -->
+  <main class="flex-1 overflow-y-auto space-y-5 pb-4">
+    <!-- HÔM NAY -->
+    <section>
+      <h2 class="text-[11px] font-bold tracking-widest text-mocha-400 uppercase mb-2">HÔM NAY</h2>
+      <div id="todayList" class="space-y-2"></div>
+    </section>
+
+    <!-- SẮP TỚI -->
+    <section>
+      <h2 class="text-[11px] font-bold tracking-widest text-mocha-400 uppercase mb-2">SẮP TỚI</h2>
+      <div id="upcomingList" class="space-y-2"></div>
+    </section>
+
+    <!-- GHI NHỚ / Ý TƯỞNG -->
+    <section>
+      <h2 class="text-[11px] font-bold tracking-widest text-mocha-400 uppercase mb-2">GHI NHỚ NHANH</h2>
+      <div id="noteList" class="space-y-2"></div>
+    </section>
+  </main>
+
+  <!-- Footer tra cứu -->
+  <footer class="pt-2 text-center border-t border-mocha-100">
+    <button onclick="timKiemTrinh()" class="text-xs text-mocha-600 bg-cream-200/80 hover:bg-cream-200 px-4 py-2 rounded-full inline-flex items-center gap-1.5 font-medium transition-colors">
+      <span>🧠</span> Tìm trong trí nhớ
+    </button>
+  </footer>
+
+  <script>
+    let danhSach = JSON.parse(localStorage.getItem('bot_bb_data') || '[]');
+    let apiKey = localStorage.getItem('gemini_api_key') || '';
+    let isListening = false;
+    let recognition = null;
+
+    if (danhSach.length === 0) {
+      danhSach = [
+        { id: 1, text: 'Gọi chị Lan trao đổi việc', time: '09:00', type: 'today', done: false },
+        { id: 2, text: 'Gửi bảng cost nguyên liệu', time: '14:30', type: 'today', done: false },
+        { id: 3, text: 'Công tác Hải Phòng', date: '02/10', type: 'upcoming', done: false },
+        { id: 4, text: 'Công thức ủ trà mới thơm hơn', type: 'note', done: false }
+      ];
+      luuDuLieu();
+    }
+
+    function luuDuLieu() {
+      localStorage.setItem('bot_bb_data', JSON.stringify(danhSach));
+      render();
+    }
+
+    function render() {
+      const todayEl = document.getElementById('todayList');
+      const upEl = document.getElementById('upcomingList');
+      const noteEl = document.getElementById('noteList');
+
+      todayEl.innerHTML = '';
+      upEl.innerHTML = '';
+      noteEl.innerHTML = '';
+
+      danhSach.forEach(item => {
+        const itemHtml = `
+          <div class="bg-white/90 border border-mocha-100/70 p-3 rounded-xl flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-2.5 flex-1 cursor-pointer" onclick="doiTrangThai(${item.id})">
+              <div class="w-4 h-4 rounded-full border border-mocha-400 flex items-center justify-center ${item.done ? 'bg-mocha-600 border-mocha-600' : ''}">
+                ${item.done ? '<svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>' : ''}
+              </div>
+              <span class="text-xs ${item.done ? 'line-through text-mocha-400' : 'text-mocha-800 font-medium'}">${item.text}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-semibold text-mocha-600">${item.time || item.date || ''}</span>
+              <button onclick="xoaMuc(${item.id})" class="text-mocha-400 hover:text-red-500 text-xs px-1">✕</button>
+            </div>
+          </div>
+        `;
+
+        if (item.type === 'today') todayEl.innerHTML += itemHtml;
+        else if (item.type === 'upcoming') upEl.innerHTML += itemHtml;
+        else noteEl.innerHTML += itemHtml;
+      });
+    }
+
+    function doiTrangThai(id) {
+      danhSach = danhSach.map(i => i.id === id ? { ...i, done: !i.done } : i);
+      luuDuLieu();
+    }
+
+    function xoaMuc(id) {
+      danhSach = danhSach.filter(i => i.id !== id);
+      luuDuLieu();
+    }
+
+    function phanTichCoBan(cauNoi) {
+      let type = 'today';
+      let time = '';
+      let date = '';
+
+      const timeMatch = cauNoi.match(/(\d{1,2})[h:](\d{0,2})/i);
+      if (timeMatch) {
+        const h = timeMatch[1].padStart(2, '0');
+        const m = (timeMatch[2] || '00').padStart(2, '0');
+        time = `${h}:${m}`;
+      }
+
+      if (cauNoi.toLowerCase().includes('mai') || cauNoi.toLowerCase().includes('ngày') || cauNoi.toLowerCase().includes('tháng')) {
+        type = 'upcoming';
+        date = 'Sắp tới';
+      } else if (!time) {
+        type = 'note';
+      }
+
+      const text = cauNoi.replace(/nhắc mình|hãy|vào lúc|lúc/gi, '').trim();
+      return { text: text || cauNoi, time, date, type, id: Date.now(), done: false };
+    }
+
+    async function xuLyCauNoi(text) {
+      document.getElementById('statusMsg').innerText = 'Bột BB đang nhớ...';
+
+      if (apiKey) {
+        try {
+          const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{
+                parts: [{
+                  text: `Trích xuất việc sau thành JSON: {"text": "nội dung ngắn", "type": "today" | "upcoming" | "note", "time": "HH:mm hoặc rỗng", "date": "DD/MM hoặc rỗng"}. Câu: "${text}"`
+                }]
+              }]
+            })
+          });
+          const raw = await res.json();
+          const parsed = JSON.parse(raw.candidates[0].content.parts[0].text.replace(/```json|```/g, '').trim());
+          danhSach.unshift({ ...parsed, id: Date.now(), done: false });
+          luuDuLieu();
+          document.getElementById('statusMsg').innerText = 'Đã lưu vào trí nhớ';
+          return;
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+
+      danhSach.unshift(phanTichCoBan(text));
+      luuDuLieu();
+      document.getElementById('statusMsg').innerText = 'Đã ghi nhớ';
+    }
+
+    function toggleVoice() {
+      const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!Speech) {
+        alert('Trình duyệt chưa bật mic, bạn hãy dùng khung gõ nhanh nhé!');
+        return;
+      }
+
+      if (isListening) {
+        recognition.stop();
+        return;
+      }
+
+      recognition = new Speech();
+      recognition.lang = 'vi-VN';
+      recognition.continuous = false;
+
+      recognition.onstart = () => {
+        isListening = true;
+        document.getElementById('micIcon').innerText = '🛑';
+        document.getElementById('micText').innerText = 'Đang nghe Bột Bảo Bối nói...';
+        document.getElementById('voiceBtn').classList.add('bg-cream-200');
+      };
+
+      recognition.onresult = (e) => {
+        const str = e.results[0][0].transcript;
+        xuLyCauNoi(str);
+      };
+
+      recognition.onend = () => {
+        isListening = false;
+        document.getElementById('micIcon').innerText = '🎙️';
+        document.getElementById('micText').innerText = 'Nói điều cần nhớ';
+        document.getElementById('voiceBtn').classList.remove('bg-cream-200');
+      };
+
+      recognition.start();
+    }
+
+    function nhapNhanh(e) {
+      e.preventDefault();
+      const input = document.getElementById('quickInput');
+      if (!input.value.trim()) return;
+      xuLyCauNoi(input.value.trim());
+      input.value = '';
+    }
+
+    function timKiemTrinh() {
+      const tuKhoa = prompt('Bột Bảo Bối muốn tìm việc gì?');
+      if (!tuKhoa) return;
+      const ketQua = danhSach.filter(i => i.text.toLowerCase().includes(tuKhoa.toLowerCase()));
+      if (ketQua.length === 0) alert('Không tìm thấy việc nào khớp!');
+      else alert('Tìm thấy:\n\n' + ketQua.map(k => `• ${k.text} (${k.time || k.date || 'Ghi nhớ'})`).join('\n'));
+    }
+
+    function moCaiDat() {
+      const key = prompt('Nhập Gemini API Key (để trống nếu muốn dùng bộ lọc tự động):', apiKey);
+      if (key !== null) {
+        apiKey = key.trim();
+        localStorage.setItem('gemini_api_key', apiKey);
+        alert('Đã lưu cấu hình!');
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
